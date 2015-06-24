@@ -54,11 +54,13 @@ function gpup {
 			echo "Ok, you'll probably want to run something like this soon:"
 			echo "    git push --set-upstream origin $CURRENT_GIT_BRANCH"
 		fi
-		RESPOSNE='q'
+		RESPONSE='q'
 		if [ "$SET_UPSTREAM" = "" ]; then
 			RESPONSE=''
 		else
 			echo "Continue with default? [enter for yes|q for quit]"
+			# technically it's enter or anything else to quit
+			# but we'll say 'q' ;) 
 			read RESPONSE
 		fi
 		if [ "$RESPONSE" = "" ]; then
