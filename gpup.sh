@@ -20,13 +20,22 @@ function gpup {
 	REMOTE=$(git config --get "branch.$CURRENT_GIT_BRANCH.remote")
 	if [ "$REMOTE" != "" ]; then
 		MERGE=$(git config --get "branch.$CURRENT_GIT_BRANCH.merge" | sed -e 's/.*\///g')
+		echo "about to test"
+		if [ "$REMOTE" != "origin" ]; then
+			echo "WARNING: this branch was pointing to the $REMOTE repo"
+			echo "         RECONFIGURING upstream repo to be on 'origin'"
+			echo "         using $CURRENT_GIT_BRANCH as remote branch name"
+			echo ""
+			REMOTE='origin'
+		fi
+
 		if [ "$MERGE" != "" ]; then
 			if [ $# -gt 0 ]; then
 				echo "running: git push $@ $REMOTE $MERGE"
-				git push $@ $REMOTE $MERGE
+				git push -u $@ $REMOTE $MERGE
 			else
 				echo "running: git push $REMOTE $MERGE"
-				git push $REMOTE $MERGE
+				git push -u $REMOTE $MERGE
 			fi
 		else
 			echo "Umm... you've got a remote configured but not a merge. quitting"
