@@ -13,7 +13,7 @@ the wrong branch name, the wrong repo name, OR types neither but
 has a misconfigured git repo.
 
 
-`gpup` solves that problem. It's a bash function (should work in zsh too)
+`gpup` solves that problem. It's an executable 
 that does the right thing. Assuming you're following the standard workflow
 of *only doing work on topic branches*, and only ever pushing with force 
 to those topic branches. 
@@ -26,10 +26,7 @@ The next time you need to do a `git push` or `git push -f` just type
 It'll do the right thing (see Usage).
 
 ## Installation.
-Assuming you use bash then just clone this repo and add 
-`source /path/to/gpup/gpup.sh` to your `~/.bashrc` or `~/.bash_profile`
-and it will be available the next time you launch a terminal or 
-source that file. 
+Just add it to a directory on your `$PATH` and make sure it's executable.
 
 ## Usage
 Whenever you would normally type `git push` type `gpup` instead. It will
