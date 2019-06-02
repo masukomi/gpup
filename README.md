@@ -15,15 +15,18 @@ has a misconfigured git repo.
 
 `gpup` solves that problem. It's a bash function (should work in zsh too)
 that does the right thing. Assuming you're following the standard workflow
-of *only doing work on topic branches*, and only ever pushing with force 
-to those topic branches. 
+of *only doing work on topic branches*, and when you do push with force 
+it's only to those topic branches. 
 
-How does it work. Simple, it gives you a better and easier habit, and 
+How does it work? Simple, it gives you a better and easier habit, and 
 doesn't assume your git repo is configured correctly.
 
 The next time you need to do a `git push` or `git push -f` just type
 `gpup` (or `gpup -f`) instead. You don't need to follow that with anything.
 It'll do the right thing (see Usage).
+
+## G.PU.D - Git PUll Down
+After typing `gpup` a few thousand times you start wanting an equivalent for pulling. `gpud`, like `gpup` always pulls from a branch with the same name as the current one, on a remote named `origin`. That's it.
 
 ## Installation.
 Assuming you use bash then just clone this repo and add 
