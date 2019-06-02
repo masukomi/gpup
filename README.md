@@ -13,7 +13,7 @@ the wrong branch name, the wrong repo name, OR types neither but
 has a misconfigured git repo.
 
 
-`gpup` solves that problem. It's a bash function (should work in zsh too)
+`gpup` solves that problem. It's an executable 
 that does the right thing. Assuming you're following the standard workflow
 of *only doing work on topic branches*, and when you do push with force 
 it's only to those topic branches. 
@@ -29,10 +29,7 @@ It'll do the right thing (see Usage).
 After typing `gpup` a few thousand times you start wanting an equivalent for pulling. `gpud`, like `gpup` always pulls from a branch with the same name as the current one, on a remote named `origin`. That's it.
 
 ## Installation.
-Assuming you use bash then just clone this repo and add 
-`source /path/to/gpup/gpup.sh` to your `~/.bashrc` or `~/.bash_profile`
-and it will be available the next time you launch a terminal or 
-source that file. 
+Just add it to a directory on your `$PATH` and make sure it's executable.
 
 ## Usage
 Whenever you would normally type `git push` type `gpup` instead. It will
