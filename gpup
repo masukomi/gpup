@@ -18,6 +18,9 @@ function set_upstream {
 	MY_CURRENT_GIT_BRANCH="$1"
 	MY_REMOTE="$2"
 	MY_MERGE="$3"
+	if [ "$MY_MERGE" == "" ]; then
+		MY_MERGE="$MY_CURRENT_GIT_BRANCH"
+	fi
 	echo "in set_upstream: $MY_CURRENT_GIT_BRANCH $MY_REMOTE"
 	echo running: git branch $MY_CURRENT_GIT_BRANCH -u $MY_REMOTE/$MY_MERGE
 	git branch $MY_CURRENT_GIT_BRANCH -u $MY_REMOTE/$MY_MERGE
@@ -48,7 +51,6 @@ else
 	echo "Want me to set the upstream tracking to origin/$CURRENT_GIT_BRANCH ? [enter for yes|n]"
 	read SET_UPSTREAM
 	if [ "$SET_UPSTREAM" != "n" ]; then
-		echo "IN ELSE"
 		set_upstream "$CURRENT_GIT_BRANCH" "origin"
 		# git branch $CURRENT_GIT_BRANCH -u origin/$CURRENT_GIT_BRANCH
 	else
@@ -66,10 +68,8 @@ else
 	fi
 	if [ "$RESPONSE" = "" ]; then
 		if [ $# -gt 0 ]; then
-			echo "running: git push $@ origin $CURRENT_GIT_BRANCH"
 			push_args $MERGE $@
 		else
-			echo "running: git push origin $CURRENT_GIT_BRANCH"
 			push $CURRENT_GIT_BRANCH
 		fi
 	else
