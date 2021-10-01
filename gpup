@@ -29,7 +29,7 @@ function set_upstream {
 
 if [ "$REMOTE" != "" ]; then
 	MERGE=$(git config --get "branch.$CURRENT_GIT_BRANCH.merge" \
-		| sed -e 's/.*\///g')
+		| sed -e 's/refs\/heads\///g')
 
 	if [ "$MERGE" != "" ]; then
 		if [ $# -gt 0 ]; then
