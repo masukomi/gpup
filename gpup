@@ -26,6 +26,12 @@ function set_upstream {
 	git branch $MY_CURRENT_GIT_BRANCH -u $MY_REMOTE/$MY_MERGE
 }
 
+if [ "$1" == "-fd" ] || [ "$1" == "-df" ]; then
+	echo "Won't force push deletion. "
+	echo "Run the following if you really want to do that:"
+	echo "git push -fd origin $CURRENT_GIT_BRANCH"
+	exit 1
+fi
 
 if [ "$REMOTE" != "" ]; then
 	MERGE=$(git config --get "branch.$CURRENT_GIT_BRANCH.merge" \
